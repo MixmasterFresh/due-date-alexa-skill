@@ -1,0 +1,4 @@
+SetDueIntent set {name} {engineering paper|assignment} to {date}
+SetDueIntent set {name} {engineering paper|assignment} due date to {date}
+GetDueIntent what {name} has due {date}
+GetDueIntent what does {name} have due {date}
