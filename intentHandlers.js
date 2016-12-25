@@ -14,7 +14,7 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
         }
         var dateValue = Date.parse(datestring);
         if (isNaN(dateValue)) {
-            console.log('Invalid date value = ' + score.value);
+            console.log('Invalid date value = ' + datestring);
             response.tell('sorry, I did not hear the date, please say that again');
             return;
         }
@@ -50,7 +50,7 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
         }
         var dateValue = Date.parse(datestring);
         if (isNaN(dateValue)) {
-            console.log('Invalid date value = ' + score.value);
+            console.log('Invalid date value = ' + datestring);
             response.tell('sorry, I did not hear the date, please say that again');
             return;
         }

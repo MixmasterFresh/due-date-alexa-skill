@@ -1,0 +1,17 @@
+​Name: Austin Horning
+Email: ahornin@purdue.edu
+School: Purdue University
+Current Major: Electrical Engineering and Computer Science
+Graduation Year: 2018
+Name of Skill: Due-Date Reminder
+Skill ID: amzn1.ask.skill.6aee1ebe-3988-45ce-ab4d-f73e6222026c
+Github link: https://github.com/TheAustinSeven/due-date-alexa-skill
+
+
+
+The concept behind this project is that it is sometimes hard to remember if you have something due soon. What this project does is allows you to save "assignments" and their due dates to this application, so that later you can ask if you have anything due on a certain day. 
+
+This project was built using node.js and the alexa skills kit api. The program persists all state data to a dynamoDB table. The entire app is pretty small, so there isn't really much room for technical discussion, but there are two main intents in intentHandlers.js that do a majority of the heavy lifting. I didn't build out many sample utterances, because there are undoubtedly an insane number of ways that someone can word the questions, so this skill is dependent on the user wording their questions and directives in the way that the app provides. That format is 
+    Alexa ask due date to set {name}'s {assignment} due date to {date}
+    and
+    Alexa ask due date what {name} has due {date}

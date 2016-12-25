@@ -8,5 +8,9 @@ var registerEventHandlers = function (eventHandlers, skillContext) {
         //it will start a new session, and then we should avoid speaking too many words.
         skillContext.needMoreHelp = false;
     };
+
+    eventHandlers.onLaunch = function (launchRequest, session, response) {
+        response.tell('Okay.  Whenever you\'re ready, you can start telling me due dates.');
+    };
 };
 exports.register = registerEventHandlers;
