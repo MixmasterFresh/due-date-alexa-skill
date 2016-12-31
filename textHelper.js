@@ -8,8 +8,9 @@ var textHelper = (function () {
     return {
         completeHelp: 'Here\'s some things you can say,'
         + ' set austin\'s engineering paper due date to tomorrow.'
-        + ' what does austin have due tomorrow.',
-        nextHelp: 'You can give a person assignments, or ask for the assignments due on a certain date. What would you like?',
+        + ' what does austin have due tomorrow.'
+        + 'Whenever you\'re ready, you can start telling me due dates.',
+        nextHelp: 'You can give a person assignments, or ask for the assignments due on a certain date.',
 
         getPlayerName: function (recognizedPlayerName) {
             if (!recognizedPlayerName) {

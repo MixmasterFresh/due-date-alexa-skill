@@ -10,7 +10,7 @@ var registerEventHandlers = function (eventHandlers, skillContext) {
     };
 
     eventHandlers.onLaunch = function (launchRequest, session, response) {
-        response.tell('Okay.  Whenever you\'re ready, you can start telling me due dates.');
+        response.ask('Okay.  Whenever you\'re ready, you can start telling me due dates.',textHelper.completeHelp);
     };
 };
 exports.register = registerEventHandlers;

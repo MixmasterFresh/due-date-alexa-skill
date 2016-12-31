@@ -9,18 +9,18 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
             datestring = intent.slots.date.value,
             assignment = intent.slots.assignment.value;
         if (!name) {
-            response.tell('sorry, I did not hear the name, please say that again');
+            response.ask('sorry, I did not hear the name, please say that again','please say that again');
             return;
         }
         var dateValue = Date.parse(datestring);
         if (isNaN(dateValue)) {
             console.log('Invalid date value = ' + datestring);
-            response.tell('sorry, I did not hear the date, please say that again');
+            response.ask('sorry, I did not hear the date, please say that again','please say that again');
             return;
         }
 
         if (!assignment){
-            response.tell('sorry, I did not hear the assignment, please say that again');
+            response.ask('sorry, I did not hear the assignment, please say that again','please say that again');
             return;
         }
         dateValue = dateValue/(24*3600);
@@ -45,13 +45,13 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
         var name = textHelper.getPlayerName(intent.slots.name.value),
             datestring = intent.slots.date.value;
         if (!name) {
-            response.tell('sorry, I did not hear the name, please say that again');
+            response.ask('sorry, I did not hear the name, please say that again','please say that again');
             return;
         }
         var dateValue = Date.parse(datestring);
         if (isNaN(dateValue)) {
             console.log('Invalid date value = ' + datestring);
-            response.tell('sorry, I did not hear the date, please say that again');
+            response.ask('sorry, I did not hear the date, please say that again','please say that again');
             return;
         }
         dateValue = dateValue/(24*3600);
@@ -82,9 +82,16 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
             }
 
             if(assignments.length === 1){
-                speechOutput = "There is one assignment for " + name + " due on that date.";
+                speechOutput = "There is one assignment for " + name + " due on that date. The assignment is " + assignments[0]["content"];
             }else{
-                speechOutput = "There are " + assignments.length + " assignments for " + name + " due on that date.";
+                speechOutput = "There are " + assignments.length + " assignments for " + name + " due on that date. The assignments are ";
+                for (var i = 0; i < assignments.length; i++) {
+                    if(i === assignments.length - 1){
+                        assignmentsString += " and " + assignments[i]["content"] + ".";
+                    }else{
+                        assignmentsString += assignments[i]["content"] + ", ";
+                    }
+                }
             }
 
             var assignmentsString = "";
@@ -99,23 +106,15 @@ var registerIntentHandlers = function (intentHandlers, skillContext) {
 
     intentHandlers['AMAZON.HelpIntent'] = function (intent, session, response) {
         var speechOutput = textHelper.completeHelp;
-        response.tell(textHelper.completeHelp);
+        response.ask(textHelper.completeHelp,'Whenever you\'re ready, you can start telling me due dates.');
     };
 
     intentHandlers['AMAZON.CancelIntent'] = function (intent, session, response) {
-        if (skillContext.needMoreHelp) {
-            response.tell('Okay.  Whenever you\'re ready, you can start telling me due dates.');
-        } else {
-            response.tell('');
-        }
+        response.tell('Okay.  Whenever you\'re ready, you can start telling me due dates.');
     };
 
     intentHandlers['AMAZON.StopIntent'] = function (intent, session, response) {
-        if (skillContext.needMoreHelp) {
-            response.tell('Okay.  Whenever you\'re ready, you can start telling me due dates.');
-        } else {
-            response.tell('');
-        }
+        response.tell('Okay.  Whenever you\'re ready, you can start telling me due dates.');
     };
 };
 exports.register = registerIntentHandlers;
